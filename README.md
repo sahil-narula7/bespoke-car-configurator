@@ -5,7 +5,7 @@ Luxury automotive commission and enquiry experience built with Next.js App Route
 ## Live Demo
 
 - Netlify URL: Add your deployed URL here after publish
-- Example format: https://your-site-name.netlify.app
+- Example format: https://sahilnarula-atelier.netlify.app/
 
 ## Tech Stack
 
