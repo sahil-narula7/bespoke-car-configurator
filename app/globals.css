@@ -1,26 +1,57 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #040506;
+  --foreground: #efe9df;
+  --site-bg: #06080a;
+  --surface: #12161b;
+  --muted: #a8a095;
+  --gold: #d4c09a;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-sora);
+  --font-display: var(--font-cormorant);
+  --color-site: var(--site-bg);
 }
 
 body {
-  background: var(--background);
+  background:
+    radial-gradient(circle at 18% 8%, rgba(212, 192, 154, 0.14), transparent 32%),
+    radial-gradient(circle at 78% 14%, rgba(255, 255, 255, 0.05), transparent 24%),
+    linear-gradient(180deg, #090b0d 0%, #06080a 44%, #040506 100%),
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.012) 0,
+      rgba(255, 255, 255, 0.012) 1px,
+      transparent 1px,
+      transparent 2px
+    );
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.font-display {
+  font-family: var(--font-cormorant), serif;
+}
+
+.bg-site {
+  background-color: var(--site-bg);
+}
+
+.text-accent {
+  color: var(--gold);
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
 }
