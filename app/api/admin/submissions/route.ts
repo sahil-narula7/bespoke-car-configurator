@@ -1,5 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
 import { getExcelFilePath, getSubmissionsDir, getSubmissions } from "@/lib/excel";
+import { isAuthenticatedAdminRequest } from "@/lib/admin-auth";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -11,14 +12,9 @@ import * as path from "path";
  */
 export async function GET(request: NextRequest) {
   try {
-    // Basic security check - in production, implement proper authentication
-    const authHeader = request.headers.get("authorization");
-    const adminToken = process.env.ADMIN_TOKEN;
-
-    // If ADMIN_TOKEN is set, require it; if not set, allow access (development mode)
-    if (adminToken && authHeader !== `Bearer ${adminToken}`) {
+    if (!isAuthenticatedAdminRequest(request)) {
       return NextResponse.json(
-        { error: "Unauthorized access. Please provide a valid admin token." },
+        { error: "Unauthorized access. Please login as owner or provide a valid admin token." },
         { status: 401 },
       );
     }
@@ -75,12 +71,9 @@ export async function GET(request: NextRequest) {
  */
 export async function POST(request: NextRequest) {
   try {
-    const authHeader = request.headers.get("authorization");
-    const adminToken = process.env.ADMIN_TOKEN;
-
-    if (adminToken && authHeader !== `Bearer ${adminToken}`) {
+    if (!isAuthenticatedAdminRequest(request)) {
       return NextResponse.json(
-        { error: "Unauthorized access. Please provide a valid admin token." },
+        { error: "Unauthorized access. Please login as owner or provide a valid admin token." },
         { status: 401 },
       );
     }

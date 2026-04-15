@@ -53,6 +53,20 @@ NEXT_PUBLIC_SANITY_API_VERSION=2025-01-01
 
 If these are not set, local fallback content is used.
 
+For owner/admin access, also configure:
+
+```bash
+OWNER_USERNAME=owner
+OWNER_PASSWORD=your-strong-password
+ADMIN_TOKEN=your-secret-token-here
+AUTH_SESSION_SECRET=another-long-random-secret
+```
+
+Notes:
+- `OWNER_USERNAME` / `OWNER_PASSWORD` are used for owner login page.
+- `ADMIN_TOKEN` still works for bearer-token API access (automation/scripts).
+- `AUTH_SESSION_SECRET` signs the owner session cookie.
+
 ## Deploy to Netlify
 
 ### Option 1: Netlify UI (recommended)
@@ -80,7 +94,41 @@ npm run dev
 npm run build
 npm run start
 npm run lint
+npm run sync:excel
+npm run sync:excel:watch
 ```
+
+## Owner Local Excel Auto-Update
+
+If your site runs on a remote host, customer submissions are saved server-side. To keep an Excel file on the owner's local machine updated automatically, run the local sync worker.
+
+Required environment variables:
+
+```bash
+SUBMISSIONS_API_URL=https://your-domain.com/api/admin/submissions?format=json
+ADMIN_TOKEN=your-secret-token-here
+OWNER_EXCEL_PATH=~/Downloads/owner-commission-submissions.xlsx
+POLL_INTERVAL_MS=30000
+```
+
+Commands:
+
+```bash
+# One-time sync
+npm run sync:excel
+
+# Continuous background sync (polling)
+npm run sync:excel:watch
+```
+
+## Owner Dashboard
+
+Use owner login and dashboard routes:
+
+- Login: `/owner/login`
+- Dashboard: `/owner`
+
+The dashboard shows submissions and allows Excel download while authenticated.
 
 ## Repository
 
