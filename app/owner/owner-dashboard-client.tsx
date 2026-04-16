@@ -84,21 +84,21 @@ export default function OwnerDashboardClient() {
   }, []);
 
   return (
-    <section className="mt-8 overflow-hidden rounded-2xl border border-white/10 bg-black/30">
-      <div className="border-b border-white/10 px-5 py-4 text-sm text-stone-300">
+    <section className="mt-8 overflow-hidden rounded-2xl border border-[#2f241d]/20 bg-[linear-gradient(170deg,#fcf7ef,#f1e5d7)] panel-glow">
+      <div className="border-b border-[#2f241d]/15 px-5 py-4 text-sm text-[#66574b]">
         {loading ? "Loading submissions..." : `Total records: ${totalRecords}`}
       </div>
 
       {error ? <div className="px-5 py-4 text-sm text-rose-300">{error}</div> : null}
 
       {!loading && !error && submissions.length === 0 ? (
-        <div className="px-5 py-10 text-sm text-stone-300">No submissions yet.</div>
+        <div className="px-5 py-10 text-sm text-[#66574b]">No submissions yet.</div>
       ) : null}
 
       {!loading && !error && submissions.length > 0 ? (
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-white/10 text-left text-sm">
-            <thead className="bg-white/5 text-xs uppercase tracking-[0.12em] text-stone-300">
+          <table className="min-w-full divide-y divide-[#2f241d]/10 text-left text-sm text-[#231912]">
+            <thead className="bg-[#f6eddf] text-xs uppercase tracking-[0.12em] text-[#6a5a4d]">
               <tr>
                 <th className="px-4 py-3">Submitted</th>
                 <th className="px-4 py-3">Name</th>
@@ -109,16 +109,16 @@ export default function OwnerDashboardClient() {
                 <th className="px-4 py-3">Message</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/10">
+            <tbody className="divide-y divide-[#2f241d]/10">
               {submissions.map((submission, index) => (
                 <tr key={`${submission.email}-${submission.submittedAt}-${index}`}>
-                  <td className="px-4 py-3 text-stone-300">{formatDate(submission.submittedAt)}</td>
+                  <td className="px-4 py-3 text-[#705f51]">{formatDate(submission.submittedAt)}</td>
                   <td className="px-4 py-3">{submission.name || "-"}</td>
                   <td className="px-4 py-3">{submission.email || "-"}</td>
                   <td className="px-4 py-3">{submission.phone || "-"}</td>
                   <td className="px-4 py-3">{submission.desiredCar || "-"}</td>
                   <td className="px-4 py-3">{submission.investmentRange || "-"}</td>
-                  <td className="max-w-sm px-4 py-3 text-stone-300">{submission.message || "-"}</td>
+                  <td className="max-w-sm px-4 py-3 text-[#6f5f52]">{submission.message || "-"}</td>
                 </tr>
               ))}
             </tbody>

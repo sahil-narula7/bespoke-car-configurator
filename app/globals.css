@@ -1,12 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #040506;
-  --foreground: #efe9df;
-  --site-bg: #06080a;
-  --surface: #12161b;
-  --muted: #a8a095;
-  --gold: #d4c09a;
+  --background: #f5f0e8;
+  --foreground: #171513;
+  --site-bg: #efe7dc;
+  --surface: #fbf8f3;
+  --muted: #6d665d;
+  --accent: #a03d2e;
+  --accent-soft: #c87461;
+  --ink-strong: #110f0d;
 }
 
 @theme inline {
@@ -19,18 +21,19 @@
 
 body {
   background:
-    radial-gradient(circle at 18% 8%, rgba(212, 192, 154, 0.14), transparent 32%),
-    radial-gradient(circle at 78% 14%, rgba(255, 255, 255, 0.05), transparent 24%),
-    linear-gradient(180deg, #090b0d 0%, #06080a 44%, #040506 100%),
+    radial-gradient(circle at 10% 12%, rgba(160, 61, 46, 0.16), transparent 35%),
+    radial-gradient(circle at 88% 4%, rgba(200, 116, 97, 0.14), transparent 31%),
+    linear-gradient(180deg, #f7f2e8 0%, #efe7db 42%, #eadfce 100%),
     repeating-linear-gradient(
       0deg,
-      rgba(255, 255, 255, 0.012) 0,
-      rgba(255, 255, 255, 0.012) 1px,
+      rgba(17, 15, 13, 0.018) 0,
+      rgba(17, 15, 13, 0.018) 1px,
       transparent 1px,
       transparent 2px
     );
   color: var(--foreground);
   font-family: var(--font-sans), sans-serif;
+  min-height: 100vh;
 }
 
 html {
@@ -46,7 +49,41 @@ html {
 }
 
 .text-accent {
-  color: var(--gold);
+  color: var(--accent);
+}
+
+.text-muted {
+  color: var(--muted);
+}
+
+.panel-glow {
+  box-shadow:
+    0 40px 95px rgba(68, 49, 37, 0.2),
+    0 1px 0 rgba(255, 255, 255, 0.6) inset;
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-reveal] {
+  animation: float-in 700ms ease both;
+}
+
+[data-reveal]:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+[data-reveal]:nth-child(3) {
+  animation-delay: 240ms;
 }
 
 input,

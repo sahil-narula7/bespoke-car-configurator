@@ -44,21 +44,21 @@ export default function OwnerLoginPage() {
   }
 
   return (
-    <main className="min-h-screen bg-site text-stone-100 flex items-center justify-center px-6 py-12">
-      <div className="w-full max-w-md rounded-2xl border border-white/10 bg-black/30 p-8 backdrop-blur">
-        <p className="text-xs uppercase tracking-[0.35em] text-accent/80">Private Access</p>
-        <h1 className="font-display mt-3 text-4xl leading-tight">Owner Login</h1>
-        <p className="mt-3 text-sm text-stone-300">
+    <main className="flex min-h-screen items-center justify-center bg-site px-6 py-12 text-[#1a1511]">
+      <div className="w-full max-w-md rounded-2xl border border-[#2f241d]/20 bg-[linear-gradient(170deg,#fbf6ef,#f1e6d8)] p-8 panel-glow">
+        <p className="text-xs uppercase tracking-[0.35em] text-[#944f3f]">Private Access</p>
+        <h1 className="font-display mt-3 text-4xl leading-tight text-[#1a1511]">Owner Login</h1>
+        <p className="mt-3 text-sm text-[#5f4f42]">
           Sign in to access commission submissions and download Excel files.
         </p>
 
         <form onSubmit={onSubmit} className="mt-8 space-y-5">
           <label className="block">
-            <span className="mb-2 block text-xs uppercase tracking-[0.2em] text-stone-300">
+            <span className="mb-2 block text-xs uppercase tracking-[0.2em] text-[#7a6658]">
               Username
             </span>
             <input
-              className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 outline-none transition focus:border-accent/60"
+              className="w-full rounded-xl border border-[#2f241d]/15 bg-[#fff9f2] px-4 py-3 outline-none transition focus:border-[#a03d2e]/70"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               autoComplete="username"
@@ -67,12 +67,12 @@ export default function OwnerLoginPage() {
           </label>
 
           <label className="block">
-            <span className="mb-2 block text-xs uppercase tracking-[0.2em] text-stone-300">
+            <span className="mb-2 block text-xs uppercase tracking-[0.2em] text-[#7a6658]">
               Password
             </span>
             <input
               type="password"
-              className="w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 outline-none transition focus:border-accent/60"
+              className="w-full rounded-xl border border-[#2f241d]/15 bg-[#fff9f2] px-4 py-3 outline-none transition focus:border-[#a03d2e]/70"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"
@@ -85,7 +85,7 @@ export default function OwnerLoginPage() {
           <button
             type="submit"
             disabled={!canSubmit || loading}
-            className="w-full rounded-xl border border-accent/60 bg-accent/10 px-4 py-3 text-sm uppercase tracking-[0.18em] text-accent transition hover:bg-accent/20 disabled:cursor-not-allowed disabled:opacity-60"
+            className="w-full rounded-xl border border-[#b15a49]/55 bg-[#a03d2e] px-4 py-3 text-sm uppercase tracking-[0.18em] text-[#fff4ea] transition hover:bg-[#8c3428] disabled:cursor-not-allowed disabled:opacity-60"
           >
             {loading ? "Signing in..." : "Sign in"}
           </button>

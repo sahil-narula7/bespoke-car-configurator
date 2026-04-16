@@ -11,13 +11,13 @@ export default function ImageGallerySection({ images }: ImageGallerySectionProps
 
   return (
     <section className="px-6 pb-8 pt-8 lg:px-12" id="gallery">
-      <div className="mx-auto max-w-7xl rounded-[1.5rem] border border-white/10 bg-[linear-gradient(180deg,rgba(12,14,18,0.92),rgba(8,9,12,0.95))] p-6 shadow-[0_24px_70px_rgba(0,0,0,0.55)] lg:p-8">
+      <div className="mx-auto max-w-7xl rounded-[1.7rem] border border-[#2f241d]/20 bg-[linear-gradient(180deg,#f8f2e7,#efe3d3)] p-6 panel-glow lg:p-8">
         <div className="mb-6 flex items-end justify-between">
           <div>
-            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-accent/80">Atelier Archive</p>
-            <h3 className="mt-2 font-display text-3xl text-stone-50">Motor Car Studies</h3>
+            <p className="font-sans text-[10px] uppercase tracking-[0.4em] text-[#935243]">Atelier Archive</p>
+            <h3 className="mt-2 font-display text-3xl text-[#1f1711]">Motor Car Studies</h3>
           </div>
-          <p className="hidden text-xs uppercase tracking-[0.28em] text-stone-500 md:block">
+          <p className="hidden text-xs uppercase tracking-[0.28em] text-[#6e5b4c] md:block">
             Material and build references
           </p>
         </div>
@@ -26,7 +26,7 @@ export default function ImageGallerySection({ images }: ImageGallerySectionProps
           {gallery.map((src, index) => (
             <article
               key={`${src}-${index}`}
-              className="overflow-hidden rounded-[1.2rem] border border-white/10 bg-black/35"
+              className="overflow-hidden rounded-[1.2rem] border border-[#2f241d]/15 bg-[#fff9f1]"
             >
               <div className="relative aspect-[16/10] w-full overflow-hidden">
                 <Image
@@ -37,11 +37,11 @@ export default function ImageGallerySection({ images }: ImageGallerySectionProps
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
-              <div className="flex items-center justify-between px-4 py-3">
-                <p className="text-xs uppercase tracking-[0.26em] text-stone-400">
+              <div className="flex items-center justify-between bg-[linear-gradient(90deg,#f7efdf,#f5ebdc)] px-4 py-3">
+                <p className="text-xs uppercase tracking-[0.26em] text-[#5f4f43]">
                   Study {index + 1}
                 </p>
-                <p className="text-[10px] uppercase tracking-[0.26em] text-stone-500">/public/gallery</p>
+                <p className="text-[10px] uppercase tracking-[0.26em] text-[#8f7564]">/public/gallery</p>
               </div>
             </article>
           ))}
