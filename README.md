@@ -1,49 +1,58 @@
 # Sahil Narula Atelier
 
-Luxury automotive commission and enquiry experience built with Next.js App Router.
+Luxury automotive commission and enquiry experience built with Next.js.
 
-## Live Demo
+## Quick Start
 
-- Netlify URL: https://sahilnarula-atelier.netlify.app/
+### Live site
 
-## Tech Stack
+- Public site: https://sahilnarula-atelier.netlify.app/
+- Owner login: https://sahilnarula-atelier.netlify.app/owner/login
+- Owner dashboard: https://sahilnarula-atelier.netlify.app/owner
 
-- Next.js 16
-- React 19
-- TypeScript
-- Tailwind CSS 4
-- GSAP + Lenis for smooth scroll and reveals
-- Optional Sanity CMS content integration
+### Visitors
 
-## Features
+1. Open the public site.
+2. Scroll to the commission form.
+3. Fill in the form and submit.
+4. The site confirms the request was received.
 
-- Premium single-page presentation with 3D hero canvas
-- Product motion reel with sound controls and autoplay fallback
-- Commission enquiry form with API endpoint validation
-- Mobile navigation menu
-- Favicon support via app/favicon.ico
+### Owner
+
+1. Open the owner login page.
+2. Sign in with the Netlify owner credentials.
+3. View submissions in the dashboard.
+4. Download today’s Excel file or log out.
+
+## Owner Setup on Netlify
+
+Set these environment variables on the production site:
+
+```bash
+OWNER_USERNAME=owner
+OWNER_PASSWORD=your-strong-password
+AUTH_SESSION_SECRET=another-long-random-secret
+ADMIN_TOKEN=your-secret-token-here
+```
+
+Then trigger a new deploy in Netlify.
 
 ## Local Development
 
-1. Install dependencies:
-
 ```bash
 npm install
-```
-
-2. Start dev server:
-
-```bash
 npm run dev
 ```
 
-3. Open:
+Open:
 
-http://localhost:3000
+- http://localhost:3000
+- http://localhost:3000/owner/login
+- http://localhost:3000/owner
 
-## Optional Environment Variables
+## Optional Sanity Variables
 
-If using Sanity CMS, create a .env.local file and configure:
+If you use Sanity CMS, add these too:
 
 ```bash
 NEXT_PUBLIC_SANITY_PROJECT_ID=
@@ -51,41 +60,32 @@ NEXT_PUBLIC_SANITY_DATASET=
 NEXT_PUBLIC_SANITY_API_VERSION=2025-01-01
 ```
 
-If these are not set, local fallback content is used.
+## Owner Local Excel Sync
 
-For owner/admin access, also configure:
+If the owner wants a spreadsheet on a local computer, use the sync worker:
 
 ```bash
-OWNER_USERNAME=owner
-OWNER_PASSWORD=your-strong-password
+SUBMISSIONS_API_URL=https://your-domain.com/api/admin/submissions?format=json
 ADMIN_TOKEN=your-secret-token-here
-AUTH_SESSION_SECRET=another-long-random-secret
+OWNER_EXCEL_PATH=~/Downloads/owner-commission-submissions.xlsx
+POLL_INTERVAL_MS=30000
 ```
 
-Notes:
-- `OWNER_USERNAME` / `OWNER_PASSWORD` are used for owner login page.
-- `ADMIN_TOKEN` still works for bearer-token API access (automation/scripts).
-- `AUTH_SESSION_SECRET` signs the owner session cookie.
-
-## Deploy to Netlify
-
-### Option 1: Netlify UI (recommended)
-
-1. Push code to GitHub
-2. In Netlify, choose Add new site -> Import an existing project
-3. Select repository: sahil-narula7/bespoke-car-configurator
-4. Build command: npm run build
-5. Publish directory: .next
-6. Deploy site
-
-### Option 2: Netlify CLI
+Run:
 
 ```bash
-npm install -g netlify-cli
-netlify login
-netlify init
-netlify deploy --build --prod
+npm run sync:excel
+npm run sync:excel:watch
 ```
+
+## Netlify Deploy
+
+1. Push to GitHub.
+2. In Netlify, import the repository.
+3. Build command: `npm run build`.
+4. Publish directory: `.next`.
+5. Add the owner environment variables.
+6. Deploy.
 
 ## Scripts
 
@@ -98,38 +98,6 @@ npm run sync:excel
 npm run sync:excel:watch
 ```
 
-## Owner Local Excel Auto-Update
-
-If your site runs on a remote host, customer submissions are saved server-side. To keep an Excel file on the owner's local machine updated automatically, run the local sync worker.
-
-Required environment variables:
-
-```bash
-SUBMISSIONS_API_URL=https://your-domain.com/api/admin/submissions?format=json
-ADMIN_TOKEN=your-secret-token-here
-OWNER_EXCEL_PATH=~/Downloads/owner-commission-submissions.xlsx
-POLL_INTERVAL_MS=30000
-```
-
-Commands:
-
-```bash
-# One-time sync
-npm run sync:excel
-
-# Continuous background sync (polling)
-npm run sync:excel:watch
-```
-
-## Owner Dashboard
-
-Use owner login and dashboard routes:
-
-- Login: `/owner/login`
-- Dashboard: `/owner`
-
-The dashboard shows submissions and allows Excel download while authenticated.
-
 ## Repository
 
-https://github.com/sahil-narula7/bespoke-car-configurator
+https://github.com/sahilnarula7/bespoke-car-configurator
