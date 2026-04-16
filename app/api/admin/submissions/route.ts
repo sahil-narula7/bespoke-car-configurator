@@ -1,8 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
-import { getExcelFilePath, getSubmissionsDir, getSubmissions } from "@/lib/excel";
+import { createExcelBuffer, getSubmissions } from "@/lib/excel";
 import { isAuthenticatedAdminRequest } from "@/lib/admin-auth";
-import * as fs from "fs";
-import * as path from "path";
 
 /**
  * GET /api/admin/submissions - Download Excel file or get submissions list
@@ -25,7 +23,7 @@ export async function GET(request: NextRequest) {
 
     if (format === "json") {
       // Return submissions as JSON
-      const submissions = getSubmissions(date);
+      const submissions = await getSubmissions(date);
       return NextResponse.json({
         success: true,
         count: submissions.length,
@@ -35,21 +33,20 @@ export async function GET(request: NextRequest) {
     }
 
     // Return Excel file for download
-    const filePath = date
-      ? path.join(getSubmissionsDir(), `commission-submissions-${date}.xlsx`)
-      : getExcelFilePath();
+    const downloadDate = date || new Date().toISOString().split("T")[0];
+    const submissions = await getSubmissions(downloadDate);
 
-    if (!fs.existsSync(filePath)) {
+    if (!submissions.length) {
       return NextResponse.json(
         { error: "No submissions found for the specified date." },
         { status: 404 },
       );
     }
 
-    const fileBuffer = fs.readFileSync(filePath);
-    const filename = path.basename(filePath);
+    const fileBuffer = createExcelBuffer(submissions);
+    const filename = `commission-submissions-${downloadDate}.xlsx`;
 
-    return new NextResponse(fileBuffer, {
+    return new NextResponse(new Uint8Array(fileBuffer), {
       status: 200,
       headers: {
         "Content-Type":
@@ -78,16 +75,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const submissions = getSubmissions();
-    const submissionsDir = getSubmissionsDir();
-    const files = fs.readdirSync(submissionsDir).filter((f) => f.endsWith(".xlsx"));
+    const submissions = await getSubmissions();
 
     return NextResponse.json({
       success: true,
       submissionCount: submissions.length,
-      filesCount: files.length,
-      submissionsDir,
-      files,
+      filesCount: null,
+      submissionsDir: null,
+      files: [],
       recentSubmissions: submissions.slice(-5),
     });
   } catch (error) {

@@ -49,7 +49,7 @@ export async function POST(request: Request) {
     };
 
     try {
-      addCommissionToExcel(submissionData);
+      await addCommissionToExcel(submissionData);
       console.log("✓ Commission submitted and saved to Excel");
     } catch (excelError) {
       console.error("Failed to save submission to Excel:", excelError);
