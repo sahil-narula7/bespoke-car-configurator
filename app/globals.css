@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f5f0e8;
-  --foreground: #171513;
-  --site-bg: #efe7dc;
-  --surface: #fbf8f3;
-  --muted: #6d665d;
-  --accent: #a03d2e;
-  --accent-soft: #c87461;
-  --ink-strong: #110f0d;
+  --background: #0d131c;
+  --foreground: #efe4d1;
+  --site-bg: #0a111a;
+  --surface: #121b27;
+  --muted: #9e9488;
+  --accent: #7b1f33;
+  --accent-soft: #b28a4e;
+  --ink-strong: #050a11;
 }
 
 @theme inline {
@@ -21,13 +21,11 @@
 
 body {
   background:
-    radial-gradient(circle at 10% 12%, rgba(160, 61, 46, 0.16), transparent 35%),
-    radial-gradient(circle at 88% 4%, rgba(200, 116, 97, 0.14), transparent 31%),
-    linear-gradient(180deg, #f7f2e8 0%, #efe7db 42%, #eadfce 100%),
+    linear-gradient(180deg, #101722 0%, #0d141e 45%, #0a1119 100%),
     repeating-linear-gradient(
       0deg,
-      rgba(17, 15, 13, 0.018) 0,
-      rgba(17, 15, 13, 0.018) 1px,
+      rgba(239, 228, 209, 0.012) 0,
+      rgba(239, 228, 209, 0.012) 1px,
       transparent 1px,
       transparent 2px
     );
@@ -57,9 +55,7 @@ html {
 }
 
 .panel-glow {
-  box-shadow:
-    0 40px 95px rgba(68, 49, 37, 0.2),
-    0 1px 0 rgba(255, 255, 255, 0.6) inset;
+  box-shadow: 0 16px 36px rgba(5, 10, 17, 0.34);
 }
 
 @keyframes float-in {

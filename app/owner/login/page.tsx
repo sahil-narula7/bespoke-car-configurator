@@ -44,21 +44,21 @@ export default function OwnerLoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-site px-6 py-12 text-[#1a1511]">
-      <div className="w-full max-w-md rounded-2xl border border-[#2f241d]/20 bg-[linear-gradient(170deg,#fbf6ef,#f1e6d8)] p-8 panel-glow">
-        <p className="text-xs uppercase tracking-[0.35em] text-[#944f3f]">Private Access</p>
-        <h1 className="font-display mt-3 text-4xl leading-tight text-[#1a1511]">Owner Login</h1>
-        <p className="mt-3 text-sm text-[#5f4f42]">
+    <main className="flex min-h-screen items-center justify-center bg-site px-6 py-12 text-[#efe4d1]">
+      <div className="w-full max-w-md rounded-2xl border border-[#d9c6a1]/20 bg-[#101a29] p-8 panel-glow">
+        <p className="text-xs uppercase tracking-[0.35em] text-[#d0b07a]">Private Access</p>
+        <h1 className="font-display mt-3 text-4xl leading-tight text-[#efe4d1]">Owner Login</h1>
+        <p className="mt-3 text-sm text-[#cdbca5]">
           Sign in to access commission submissions and download Excel files.
         </p>
 
         <form onSubmit={onSubmit} className="mt-8 space-y-5">
           <label className="block">
-            <span className="mb-2 block text-xs uppercase tracking-[0.2em] text-[#7a6658]">
+            <span className="mb-2 block text-xs uppercase tracking-[0.2em] text-[#d0b07a]">
               Username
             </span>
             <input
-              className="w-full rounded-xl border border-[#2f241d]/15 bg-[#fff9f2] px-4 py-3 outline-none transition focus:border-[#a03d2e]/70"
+              className="w-full rounded-xl border border-[#d9c6a1]/18 bg-[#142234] px-4 py-3 text-[#efe4d1] outline-none transition focus:border-[#d0b07a]/70"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               autoComplete="username"
@@ -67,12 +67,12 @@ export default function OwnerLoginPage() {
           </label>
 
           <label className="block">
-            <span className="mb-2 block text-xs uppercase tracking-[0.2em] text-[#7a6658]">
+            <span className="mb-2 block text-xs uppercase tracking-[0.2em] text-[#d0b07a]">
               Password
             </span>
             <input
               type="password"
-              className="w-full rounded-xl border border-[#2f241d]/15 bg-[#fff9f2] px-4 py-3 outline-none transition focus:border-[#a03d2e]/70"
+              className="w-full rounded-xl border border-[#d9c6a1]/18 bg-[#142234] px-4 py-3 text-[#efe4d1] outline-none transition focus:border-[#d0b07a]/70"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               autoComplete="current-password"

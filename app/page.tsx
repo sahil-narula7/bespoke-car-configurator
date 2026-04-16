@@ -15,7 +15,7 @@ export default async function Home() {
     <ScrollProvider>
       <ScrollController />
       <ScrollTracker />
-      <main className="bg-site text-stone-100">
+      <main className="bg-site text-[#172335]">
         <HeroSection
           kicker={content.heroKicker}
           title={content.heroTitle}
